@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block css_files %}
+<link rel="stylesheet" href="{% static "members/index.css" %}" />
+{% endblock %}
+
+
+{% block content %}
+<section id="welcome_top">
+</section>
+{% if form.errors %}
+
+<p>There was an error with the information you entered.</p>
+
+
+
+{% endif %}
+
+    <h1>Register</h1>
+<br/><br/>
+
+
+<div class="container">
+    {% if messages %}
+        {% for message in messages %}
+            {{message}}
+        {% endfor %}
+    {% endif %}
+
+</div>
+
+
+<form action = "{% url 'register_user' %}" method = POST>
+    {% csrf_token %}
+
+    {{ form.as_p }}
+
+<form>
+
+<br></br>
+            <input type="submit" value="Submit" class="btn btn-secondary">
+
+</form>
+
+</body>
+{% endblock %}

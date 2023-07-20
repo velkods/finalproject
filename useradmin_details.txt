@@ -1,0 +1,9 @@
+superuser/admin acc:
+
+username: admin
+pw: finalproject
+
+test_user:
+
+username: test_user
+pw: password_test
