@@ -1,6 +1,7 @@
 from datetime import date
 from django.shortcuts import render
 from .models import GoodsList
+from django.shortcuts import get_object_or_404
 
 # Create your views here.
 
@@ -77,8 +78,7 @@ def products(request):
   })
 
 def product_detail(request, slug):
-  goods_list = GoodsList.objects.all()
-  identified_product = (product for product in goods_list if {product.slug} == slug)
+  identified_product = get_object_or_404(GoodsList, slug=slug)
   return render(request, "store/product_detail.html", {
     "product": identified_product
-  })
+  }) 
