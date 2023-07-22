@@ -14,7 +14,7 @@
 <section id="summary">
   <h2>{{ product.title }}</h2>
   <article>
-    <img src="{% static "store/images/"|add:product.image %}" alt={{ product.title }} />
+    <img src={{product.image.url}}/>
     <p> Price: P{{ product.price }} </p>
     <div>
       <p>Available:

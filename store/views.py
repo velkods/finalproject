@@ -1,10 +1,20 @@
 from datetime import date
 from django.shortcuts import render
+from .models import GoodsList
 
 # Create your views here.
 
+def all_goods(request):
+  goods_list = GoodsList.objects.all()
+  return render(request, "store/all_products.html", {'goods_list' : goods_list}) 
+
+def all_goods_starting_page(request):
+  goods_list_home = GoodsList.objects.all()
+  return render(request, "store/index.html", {'goods_list' : goods_list_home}) 
+
 def starting_page(request):
-  return render(request, "store/index.html")
+  goods_list = GoodsList.objects.all()
+  return render(request, "store/index.html", {'goods_list' : goods_list})
 
 def products(request):
   return render(request, "store/all_products.html")
@@ -67,7 +77,8 @@ def products(request):
   })
 
 def product_detail(request, slug):
-  identified_product = next(product for product in all_products if product['slug'] == slug)
+  goods_list = GoodsList.objects.all()
+  identified_product = (product for product in goods_list if {product.slug} == slug)
   return render(request, "store/product_detail.html", {
     "product": identified_product
   })

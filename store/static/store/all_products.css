@@ -33,8 +33,7 @@ body {
 
   #all-products {
     margin: 7rem auto;
-    width: 90%;
-    max-width: 60rem;
+    width: 60rem;
   }
   
   #all-products h2 {
